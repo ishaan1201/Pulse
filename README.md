@@ -1,17 +1,17 @@
  <p align="center">
-  <a href="https://monochrome.tf">
-    <img src="https://github.com/monochrome-music/monochrome/blob/main/public/assets/512.png?raw=true" alt="Monochrome Logo" width="150px">
+  <a href="https://github.com/ishaan1201/Pulse">
+    <img src="https://github.com/ishaan1201/Pulse/blob/main/public/assets/512.png?raw=true" alt="Pulse Logo" width="150px">
   </a>
 </p>
 
-<h1 align="center">Monochrome</h1>
+<h1 align="center">Pulse</h1>
 
 <p align="center">
   <strong>An open-source, privacy-respecting, ad-free music app.</strong>
 </p>
 
 <p align="center">
-  <a href="https://monochrome.tf">Website</a> -
+  <a href="https://github.com/ishaan1201/Pulse">Website</a> -
   <a href="https://ko-fi.com/monochromemusic">Donate</a> -
   <a href="#features">Features</a> -
   <a href="#usage">Usage</a> -
@@ -20,32 +20,32 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/monochrome-music/monochrome/stargazers">
-    <img src="https://img.shields.io/github/stars/monochrome-music/monochrome?style=for-the-badge&color=ffffff&labelColor=000000" alt="GitHub stars">
+  <a href="https://github.com/ishaan1201/Pulse/stargazers">
+    <img src="https://img.shields.io/github/stars/ishaan1201/Pulse?style=for-the-badge&color=ffffff&labelColor=000000" alt="GitHub stars">
   </a>
-  <a href="https://github.com/monochrome-music/monochrome/forks">
-    <img src="https://img.shields.io/github/forks/monochrome-music/monochrome?style=for-the-badge&color=ffffff&labelColor=000000" alt="GitHub forks">
+  <a href="https://github.com/ishaan1201/Pulse/forks">
+    <img src="https://img.shields.io/github/forks/ishaan1201/Pulse?style=for-the-badge&color=ffffff&labelColor=000000" alt="GitHub forks">
   </a>
-  <a href="https://github.com/monochrome-music/monochrome/issues">
-    <img src="https://img.shields.io/github/issues/monochrome-music/monochrome?style=for-the-badge&color=ffffff&labelColor=000000" alt="GitHub issues">
+  <a href="https://github.com/ishaan1201/Pulse/issues">
+    <img src="https://img.shields.io/github/issues/ishaan1201/Pulse?style=for-the-badge&color=ffffff&labelColor=000000" alt="GitHub issues">
   </a>
 </p>
 
 ---
 
-## What is Monochrome?
+## What is Pulse?
 
-**Monochrome** is an open-source, privacy-respecting, ad-free [TIDAL](https://tidal.com) web UI, built on top of Hi-Fi. It provides a beautiful, minimalist interface for streaming high-quality music without the clutter of traditional streaming platforms.
+**Pulse** is an open-source, privacy-respecting, ad-free [TIDAL](https://tidal.com) web UI, built on top of Hi-Fi. It provides a beautiful, minimalist interface for streaming high-quality music without the clutter of traditional streaming platforms.
 
 <p align="center">
-  <a href="https://monochrome.tf/album/90502209">
-    <img width="2559" height="1439" alt="Image of 'NASIR' By Nas On Monochrome" src="https://i.samidy.xyz/NASIR.png"  alt="Monochrome UI" width="800">
+  <a href="https://github.com/ishaan1201/Pulse">
+    <img width="2559" height="1439" alt="Image of 'NASIR' By Nas On Pulse" src="https://i.samidy.xyz/NASIR.png"  alt="Pulse UI" width="800">
   </a>
 </p>
 
 <p align="center">
-  <a href="https://monochrome.tf/album/413189044">
-    <img width="2559" height="1439" alt="Image of 'Jump Out' By Osamason On Monochrome" src="https://i.samidy.xyz/jumpout.png"  alt="Monochrome UI" width="800">
+  <a href="https://github.com/ishaan1201/Pulse">
+    <img width="2559" height="1439" alt="Image of 'Jump Out' By Osamason On Pulse" src="https://i.samidy.xyz/jumpout.png"  alt="Pulse UI" width="800">
   </a>
 </p>
 
@@ -106,7 +106,7 @@
 
 ### Live Instance
 
-Our Recommended way to use monochrome is through our official instance:
+Our Recommended way to use Pulse is through our official instance:
 
 **[monochrome.tf](https://monochrome.tf)** / **[monochrome.samidy.com](https://monochrome.samidy.com)**
 
@@ -117,46 +117,15 @@ For alternative instances, check [INSTANCES.md](INSTANCES.md).
 
 ## Self-Hosting
 
-NOTE: Accounts will not work on self-hosted instances. Our Appwrite authentication system only allows authorized domains.
-
-We had to heavily customize the authentication system and write several custom scripts to support features like SMTP and Google OAuth (which are currently bugged in Appwrite). Because of this, we can no longer provide a self-hostable accounts system.
-
 ### Option 1: Docker (Recommended)
 
 ```bash
-git clone https://github.com/monochrome-music/monochrome.git
-cd monochrome
+git clone https://github.com/ishaan1201/Pulse.git
+cd pulse
 docker compose up -d
 ```
 
 Visit `http://localhost:3000`
-
-### Tailscale Access
-
-Visit `http://<tailscale_server_hostname_or_ip>:3000`
-
-By default, the app uses Vite preview, which restricts access to localhost.  
-To allow access over Tailscale:
-
-1. Open `vite.config.js`
-
-2. Uncomment and configure the `preview` section:
-
-```js
-preview: {
-    host: true,
-    allowedHosts: ['<your_tailscale_hostname>'], // e.g. pi5.tailf5f622.ts.net
-},
-```
-
-3. Restart with a fresh container (if already running):
-
-```bash
-docker compose down
-docker compose up -d
-```
-
-For development mode and advanced setups, see [DOCKER.md](DOCKER.md).
 
 ### Option 2: Manual Installation
 
@@ -169,8 +138,8 @@ For development mode and advanced setups, see [DOCKER.md](DOCKER.md).
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/monochrome-music/monochrome.git
-    cd monochrome
+    git clone https://github.com/ishaan1201/Pulse.git
+    cd pulse
     ```
 
 2. **Install dependencies:**
@@ -259,7 +228,7 @@ We welcome contributions from the community! Please see our [Contributing Guide]
 
 <p align="center">
   <a href="https://fmhy.net/audio#streaming-sites">
-    <img src="https://raw.githubusercontent.com/monochrome-music/monochrome/refs/heads/main/public/assets/asseenonfmhy880x310.png" alt="As seen on FMHY" height="50">
+    <img src="https://raw.githubusercontent.com/ishaan1201/Pulse/refs/heads/main/public/assets/asseenonfmhy880x310.png" alt="As seen on FMHY" height="50">
   </a>
 </p>
 
@@ -270,16 +239,15 @@ We welcome contributions from the community! Please see our [Contributing Guide]
 </p>
 
 <p align="center">
-  Made with ❤️ by the Monochrome team
+  Made with ❤️ by the Pulse team
 </p>
 
 ## Star History
 
-<a href="https://www.star-history.com/#monochrome-music/monochrome&type=date&logscale&legend=top-left">
+<a href="https://www.star-history.com/#ishaan1201/Pulse&type=date&logscale&legend=top-left">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=monochrome-music/monochrome&type=date&theme=dark&logscale&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=monochrome-music/monochrome&type=date&logscale&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=monochrome-music/monochrome&type=date&logscale&legend=top-left" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=ishaan1201/Pulse&type=date&theme=dark&logscale&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=ishaan1201/Pulse&type=date&logscale&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=ishaan1201/Pulse&type=date&logscale&legend=top-left" />
  </picture>
 </a>
-

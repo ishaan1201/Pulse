@@ -107,7 +107,7 @@ export class ThemeStore {
     }
 
     applySavedTheme() {
-        const theme = localStorage.getItem('monochrome-theme');
+        const theme = localStorage.getItem('pulse-theme');
         const css = localStorage.getItem('custom_theme_css');
         if (theme === 'custom' && css) {
             const metadataStr = localStorage.getItem('community-theme');
@@ -381,7 +381,7 @@ export class ThemeStore {
         }
 
         localStorage.setItem('custom_theme_css', css);
-        localStorage.setItem('monochrome-theme', 'custom');
+        localStorage.setItem('pulse-theme', 'custom');
 
         const metadata = {
             id: theme.id,
@@ -408,7 +408,7 @@ export class ThemeStore {
             const isPresetOrGeneric = GENERIC_FONT_FAMILIES.some((generic) => mainFont.toLowerCase() === generic);
 
             if (!isPresetOrGeneric) {
-                const FONT_LINK_ID = 'monochrome-dynamic-font';
+                const FONT_LINK_ID = 'pulse-dynamic-font';
                 let link = document.getElementById(FONT_LINK_ID);
 
                 if (urlMatch && urlMatch[1]) {

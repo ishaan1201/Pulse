@@ -1,13 +1,13 @@
 {
-    "name": "monochrome",
+    "name": "pulse",
     "type": "module",
     "version": "2.5.0",
-    "description": "[<img src=\"https://github.com/monochrome-music/monochrome/blob/main/assets/512.png?raw=true\" alt=\"Monochrome Logo\">](https://monochrome.tf)",
+    "description": "[<img src=\"https://github.com/ishaan1201/Pulse/blob/main/assets/512.png?raw=true\" alt=\"Pulse Logo\">](https://github.com/ishaan1201/Pulse)",
     "scripts": {
         "dev": "vite",
         "dev:desktop": "start bun run dev & node scripts/dev-runner.js",
         "build": "vite build --mode neutralino && bun x neu build",
-        "postbuild": "node -e \"const fs = require('fs'); const path = require('path'); const src = 'extensions'; const dest = path.join('dist', 'Monochrome', 'extensions'); if (fs.existsSync(src)) { fs.mkdirSync(dest, { recursive: true }); fs.cpSync(src, dest, { recursive: true }); console.log('Extensions manually copied to ' + dest); }\"",
+        "postbuild": "node -e \"const fs = require('fs'); const path = require('path'); const src = 'extensions'; const dest = path.join('dist', 'Pulse', 'extensions'); if (fs.existsSync(src)) { fs.mkdirSync(dest, { recursive: true }); fs.cpSync(src, dest, { recursive: true }); console.log('Extensions manually copied to ' + dest); }\"",
         "preview": "vite preview",
         "lint:js": "eslint .",
         "lint:css": "stylelint \"**/*.css\"",
@@ -17,15 +17,15 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/monochrome-music/monochrome.git"
+        "url": "git+https://github.com/ishaan1201/Pulse.git"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/monochrome-music/monochrome/issues"
+        "url": "https://github.com/ishaan1201/Pulse/issues"
     },
-    "homepage": "https://github.com/monochrome-music/monochrome#readme",
+    "homepage": "https://github.com/ishaan1201/Pulse#readme",
     "devDependencies": {
         "@neutralinojs/neu": "^11.7.0",
         "@types/node": "^25.3.5",

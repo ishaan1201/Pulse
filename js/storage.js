@@ -1,6 +1,6 @@
 //storage.js
 export const apiSettings = {
-    STORAGE_KEY: 'monochrome-api-instances-v9',
+    STORAGE_KEY: 'pulse-api-instances-v9',
     INSTANCES_URLS: [
         'https://tidal-uptime.jiffy-puffs-1j.workers.dev/',
         'https://tidal-uptime.props-76styles.workers.dev/',
@@ -13,7 +13,7 @@ export const apiSettings = {
     _loadUserInstances() {
         if (this.userInstances) return this.userInstances;
         try {
-            const stored = localStorage.getItem('monochrome-user-api-instances-v1');
+            const stored = localStorage.getItem('pulse-user-api-instances-v1');
             this.userInstances = stored ? JSON.parse(stored) : { api: [], streaming: [] };
         } catch {
             this.userInstances = { api: [], streaming: [] };
@@ -22,7 +22,7 @@ export const apiSettings = {
     },
 
     _saveUserInstances() {
-        localStorage.setItem('monochrome-user-api-instances-v1', JSON.stringify(this.userInstances));
+        localStorage.setItem('pulse-user-api-instances-v1', JSON.stringify(this.userInstances));
     },
 
     async loadInstancesFromGitHub() {
@@ -79,7 +79,7 @@ export const apiSettings = {
                         { url: 'https://arran.monochrome.tf', version: '2.4' },
                         { url: 'https://triton.squid.wtf', version: '2.4' },
                         { url: 'https://api.monochrome.tf', version: '2.3' },
-                        { url: 'https://monochrome-api.samidy.com', version: '2.3' },
+                        { url: 'https://pulse-api.samidy.com', version: '2.3' },
                         { url: 'https://maus.qqdl.site', version: '2.2' },
                         { url: 'https://vogel.qqdl.site', version: '2.2' },
                         { url: 'https://katze.qqdl.site', version: '2.2' },
@@ -234,7 +234,7 @@ export const apiSettings = {
     },
 };
 export const recentActivityManager = {
-    STORAGE_KEY: 'monochrome-recent-activity',
+    STORAGE_KEY: 'pulse-recent-activity',
     LIMIT: 10,
 
     _get() {
@@ -287,13 +287,13 @@ export const recentActivityManager = {
 };
 
 export const themeManager = {
-    STORAGE_KEY: 'monochrome-theme',
-    CUSTOM_THEME_KEY: 'monochrome-custom-theme',
+    STORAGE_KEY: 'pulse-theme',
+    CUSTOM_THEME_KEY: 'pulse-custom-theme',
 
     defaultThemes: {
         light: {},
         dark: {},
-        monochrome: {},
+        pulse: {},
         ocean: {},
         purple: {},
         forest: {},
@@ -316,7 +316,7 @@ export const themeManager = {
 
         if (theme === 'system') {
             const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            document.documentElement.setAttribute('data-theme', isDark ? 'monochrome' : 'white');
+            document.documentElement.setAttribute('data-theme', isDark ? 'pulse' : 'white');
         } else {
             document.documentElement.setAttribute('data-theme', theme);
         }
@@ -1506,7 +1506,7 @@ export const settingsUiState = {
 };
 
 export const queueManager = {
-    STORAGE_KEY: 'monochrome-queue',
+    STORAGE_KEY: 'pulse-queue',
 
     getQueue() {
         try {
@@ -1536,7 +1536,7 @@ export const queueManager = {
 };
 
 export const sidebarSettings = {
-    STORAGE_KEY: 'monochrome-sidebar-collapsed',
+    STORAGE_KEY: 'pulse-sidebar-collapsed',
 
     isCollapsed() {
         try {
@@ -2035,17 +2035,17 @@ export const sidebarSectionSettings = {
 if (typeof window !== 'undefined' && window.matchMedia) {
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
         if (themeManager.getTheme() === 'system') {
-            document.documentElement.setAttribute('data-theme', e.matches ? 'monochrome' : 'white');
+            document.documentElement.setAttribute('data-theme', e.matches ? 'pulse' : 'white');
         }
     });
 }
 
 export const fontSettings = {
-    STORAGE_KEY: 'monochrome-font-config-v2',
-    CUSTOM_FONTS_KEY: 'monochrome-custom-fonts',
-    FONT_SIZE_KEY: 'monochrome-font-size',
-    FONT_LINK_ID: 'monochrome-dynamic-font',
-    FONT_FACE_ID: 'monochrome-dynamic-fontface',
+    STORAGE_KEY: 'pulse-font-config-v2',
+    CUSTOM_FONTS_KEY: 'pulse-custom-fonts',
+    FONT_SIZE_KEY: 'pulse-font-size',
+    FONT_LINK_ID: 'pulse-dynamic-font',
+    FONT_FACE_ID: 'pulse-dynamic-fontface',
 
     getDefaultConfig() {
         return {
@@ -2310,7 +2310,7 @@ export const fontSettings = {
     },
 
     loadAppleMusicFont() {
-        const APPLE_FONT_LINK_ID = 'monochrome-apple-font';
+        const APPLE_FONT_LINK_ID = 'pulse-apple-font';
 
         // Remove any existing dynamic font links
         let existingLink = document.getElementById(this.FONT_LINK_ID);

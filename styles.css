@@ -129,7 +129,7 @@
     --color-info-hover: #2563eb;
 }
 
-:root[data-theme='monochrome'] {
+:root[data-theme='pulse'] {
     color-scheme: dark;
 
     --background: #0a0a0a;
