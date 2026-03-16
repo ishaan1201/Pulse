@@ -8336,3 +8336,68 @@ body:has(#side-panel.active) #close-fullscreen-cover-btn {
     align-items: center;
     gap: 0.5rem;
 }
+
+/* =========================================
+   NETPLIX MUSIC: MOBILE APP OVERHAUL
+   ========================================= */
+@media screen and (max-width: 768px) {
+    body, html {
+        overflow: hidden; /* Prevent elastic bouncing on iOS */
+        background-color: #020202; /* Deep black */
+    }
+
+    #app {
+        display: flex;
+        flex-direction: column;
+        height: 100dvh; /* Use dynamic viewport height for mobile browsers */
+    }
+
+    /* Hide the desktop sidebar on mobile */
+    #sidebar {
+        display: none !important;
+    }
+
+    /* Make the main content scrollable and take up remaining space */
+    #content {
+        flex: 1;
+        overflow-y: auto;
+        padding-bottom: 90px; /* Space for the bottom player */
+        padding-top: 20px;
+    }
+
+    /* The Bottom Player (Spotify Style) */
+    #player {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 80px;
+        background: rgba(10, 10, 10, 0.95);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-top: 1px solid rgba(0, 255, 255, 0.1); /* Neon Cyan border */
+        display: flex;
+        align-items: center;
+        padding: 0 15px;
+        z-index: 9999;
+        box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Shrink the album art for the mini-player */
+    #player-album-art {
+        width: 45px;
+        height: 45px;
+        border-radius: 8px;
+    }
+
+    /* Hide complex desktop volume controls on mobile */
+    #volume-control, #player-extra-controls {
+        display: none !important;
+    }
+
+    /* Re-color the progress bar to Netplix Cyan */
+    #progress-fill {
+        background-color: #00ffff !important;
+        box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    }
+}

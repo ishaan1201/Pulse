@@ -31,8 +31,8 @@ export default function authGatePlugin() {
 
         configurePreviewServer(server) {
             const AUTH_ENABLED = (env.AUTH_ENABLED ?? 'false') !== 'false';
-            const APPWRITE_ENDPOINT = env.APPWRITE_ENDPOINT;
-            const APPWRITE_PROJECT_ID = env.APPWRITE_PROJECT_ID;
+            const FIREBASE_API_KEY = env.FIREBASE_API_KEY;
+            const FIREBASE_PROJECT_ID = env.FIREBASE_PROJECT_ID;
             const POCKETBASE_URL = env.POCKETBASE_URL;
             const AUTH_GOOGLE_ENABLED = env.AUTH_GOOGLE_ENABLED;
             const AUTH_EMAIL_ENABLED = env.AUTH_EMAIL_ENABLED;
@@ -51,9 +51,9 @@ export default function authGatePlugin() {
             if (Object.keys(authProviderOverrides).length > 0) {
                 flags.push(`window.__AUTH_PROVIDERS__=${JSON.stringify(authProviderOverrides)}`);
             }
-            if (APPWRITE_ENDPOINT) flags.push(`window.__APPWRITE_ENDPOINT__=${JSON.stringify(APPWRITE_ENDPOINT)}`);
-            if (APPWRITE_PROJECT_ID)
-                flags.push(`window.__APPWRITE_PROJECT_ID__=${JSON.stringify(APPWRITE_PROJECT_ID)}`);
+            if (FIREBASE_API_KEY) flags.push(`window.__FIREBASE_API_KEY__=${JSON.stringify(FIREBASE_API_KEY)}`);
+            if (FIREBASE_PROJECT_ID)
+                flags.push(`window.__FIREBASE_PROJECT_ID__=${JSON.stringify(FIREBASE_PROJECT_ID)}`);
             if (POCKETBASE_URL) flags.push(`window.__POCKETBASE_URL__=${JSON.stringify(POCKETBASE_URL)}`);
             const configScript = flags.length > 0 ? `<script>${flags.join(';')};</script>` : null;
 
@@ -98,7 +98,7 @@ export default function authGatePlugin() {
                     process.exit(1);
                 }
 
-                console.log(`Auth gate enabled (Project: ${APPWRITE_PROJECT_ID})`);
+                console.log(`Auth gate enabled (Project: ${FIREBASE_PROJECT_ID})`);
 
                 server.middlewares.use(
                     cookieSession({

@@ -1,5 +1,14 @@
 // js/accounts/auth.js
 import { auth } from './config.js';
+import {
+    signInWithEmailAndPassword,
+    createUserWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged,
+    sendPasswordResetEmail,
+    GoogleAuthProvider,
+    signInWithPopup
+} from "firebase/auth";
 
 export class AuthManager {
     constructor() {
@@ -9,32 +18,23 @@ export class AuthManager {
     }
 
     async init() {
-        const params = new URLSearchParams(window.location.search);
-        const userId = params.get('userId');
-        const secret = params.get('secret');
-        const isOAuthRedirect = params.get('oauth') === '1';
-
-        if (userId && secret && userId !== 'null' && secret !== 'null') {
-            try {
-                await auth.createSession(userId, secret);
-                window.history.replaceState({}, '', window.location.pathname);
-            } catch (error) {
-                console.warn('OAuth session handoff failed:', error.message);
-                window.history.replaceState({}, '', window.location.pathname);
+        // Firebase handles session persistence automatically.
+        // We just need to listen for when the state changes.
+        onAuthStateChanged(auth, (firebaseUser) => {
+            if (firebaseUser) {
+                // Map Firebase user object to match what Pulse expects
+                this.user = {
+                    id: firebaseUser.uid,
+                    name: firebaseUser.displayName || firebaseUser.email.split('@')[0],
+                    email: firebaseUser.email,
+                };
+            } else {
+                this.user = null;
             }
-        } else if (isOAuthRedirect) {
-            await new Promise((resolve) => setTimeout(resolve, 500));
-            window.history.replaceState({}, '', window.location.pathname);
-        }
 
-        try {
-            this.user = await auth.get();
             this.updateUI(this.user);
             this.authListeners.forEach((listener) => listener(this.user));
-        } catch {
-            this.user = null;
-            this.updateUI(null);
-        }
+        });
     }
 
     onAuthStateChanged(callback) {
@@ -47,23 +47,19 @@ export class AuthManager {
 
     async signInWithGoogle() {
         try {
-            auth.createOAuth2Session(
-                'google',
-                window.location.origin + '/index.html?oauth=1',
-                window.location.origin + '/login.html'
-            );
+            const provider = new GoogleAuthProvider();
+            await signInWithPopup(auth, provider);
+            // State change listener in init() handles the rest
         } catch (error) {
-            console.error('Login failed:', error);
+            console.error('Google Login failed:', error);
             alert(`Login failed: ${error.message}`);
         }
     }
 
     async signInWithEmail(email, password) {
         try {
-            await auth.createEmailPasswordSession(email, password);
-            this.user = await auth.get();
-            this.updateUI(this.user);
-            this.authListeners.forEach((listener) => listener(this.user));
+            await signInWithEmailAndPassword(auth, email, password);
+            // State change listener in init() handles the rest
             return this.user;
         } catch (error) {
             console.error('Email Login failed:', error);
@@ -74,11 +70,8 @@ export class AuthManager {
 
     async signUpWithEmail(email, password) {
         try {
-            await auth.create('unique()', email, password);
-            await auth.createEmailPasswordSession(email, password);
-            this.user = await auth.get();
-            this.updateUI(this.user);
-            this.authListeners.forEach((listener) => listener(this.user));
+            await createUserWithEmailAndPassword(auth, email, password);
+            // State change listener in init() handles the rest
             return this.user;
         } catch (error) {
             console.error('Sign Up failed:', error);
@@ -89,7 +82,7 @@ export class AuthManager {
 
     async sendPasswordReset(email) {
         try {
-            await auth.createRecovery(email, window.location.origin + '/reset-password.html');
+            await sendPasswordResetEmail(auth, email);
             alert(`Password reset email sent to ${email}`);
         } catch (error) {
             console.error('Password reset failed:', error);
@@ -100,10 +93,8 @@ export class AuthManager {
 
     async signOut() {
         try {
-            await auth.deleteSession('current');
-            this.user = null;
-            this.updateUI(null);
-            this.authListeners.forEach((listener) => listener(null));
+            await signOut(auth);
+            // State change listener in init() will set user to null
 
             if (window.__AUTH_GATE__) {
                 window.location.href = '/login';
@@ -116,6 +107,7 @@ export class AuthManager {
         }
     }
 
+    // Unchanged UI updater function to ensure the frontend buttons work exactly the same
     updateUI(user) {
         const connectBtn = document.getElementById('auth-connect-btn');
         const clearDataBtn = document.getElementById('auth-clear-cloud-btn');

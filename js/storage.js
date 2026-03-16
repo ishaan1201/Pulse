@@ -1884,9 +1884,10 @@ export const sidebarSectionSettings = {
     shouldShowDonate() {
         try {
             const val = localStorage.getItem(this.SHOW_DONATE_KEY);
-            return val === null ? true : val === 'true';
+            return val === 'true';
+            // return val === null ? true : val === 'true';
         } catch {
-            return true;
+            return false;
         }
     },
 
@@ -1909,9 +1910,9 @@ export const sidebarSectionSettings = {
     shouldShowAbout() {
         try {
             const val = localStorage.getItem(this.SHOW_ABOUT_KEY);
-            return val === null ? true : val === 'true';
+            return val === 'true';
         } catch {
-            return true;
+            return false;
         }
     },
 
@@ -1935,9 +1936,9 @@ export const sidebarSectionSettings = {
     shouldShowDiscord() {
         try {
             const val = localStorage.getItem(this.SHOW_DISCORD_KEY);
-            return val === null ? true : val === 'true';
+            return val === 'true';
         } catch {
-            return true;
+            return false;
         }
     },
 

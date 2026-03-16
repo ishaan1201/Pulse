@@ -1,16 +1,16 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Monochrome Music</title>
-        <meta name="theme-color" content="#000000" />
+        <meta charset="utf-8" />
+        <title>Pulse</title>
+        <meta name="description" content="Pulse Music Player" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+        <meta name="theme-color" content="#020202" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <base href="/" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="apple-mobile-web-app-title" content="Monochrome" />
-        <meta name="description" content="A minimalist music streaming application" />
+        <meta name="apple-mobile-web-app-title" content="Pulse" />
 
         <!-- Preconnect to critical third-party origins -->
         <link rel="preconnect" href="https://api.fonts.coollabs.io" crossorigin />
@@ -1289,7 +1289,7 @@
                     </button>
                 </div>
                 <p style="font-size: 0.9rem; color: var(--muted-foreground); margin-bottom: 1rem">
-                    Configure custom PocketBase and Appwrite instances. Leave empty to use defaults.
+                    Configure custom PocketBase and Firebase instances. Leave empty to use defaults.
                     <br />
                     A Guide To Set This Up Can Be Found
                     <a
@@ -1303,7 +1303,7 @@
                     <input type="url" id="custom-pb-url" class="template-input" placeholder="https://data.samidy.xyz" />
                 </div>
                 <div style="margin-bottom: 1rem">
-                    <label style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem">Appwrite Endpoint</label>
+                    <label style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem">Firebase API Key</label>
                     <input
                         type="url"
                         id="custom-appwrite-endpoint"
@@ -1312,7 +1312,7 @@
                     />
                 </div>
                 <div style="margin-bottom: 1rem">
-                    <label style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem">Appwrite Project ID</label>
+                    <label style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem">Firebase Project ID</label>
                     <input
                         type="text"
                         id="custom-appwrite-project"
@@ -1853,21 +1853,21 @@
             <aside class="sidebar">
                 <div class="sidebar-content">
                     <div class="sidebar-logo">
-                        <a href="https://monochrome.tf/" class="sidebar-logo-link">
+                        <a href="/" class="sidebar-logo-link">
                             <svg
                                 class="app-logo"
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="200"
                                 height="200"
-                                viewBox="14.75 14.75 70.5 70.5"
+                                viewBox="0 0 100 100"
+                                fill="currentColor"
                             >
-                                <g fill="currentColor">
-                                    <path
-                                        d="M38.25 14.75H85.25V61.75H61.75V38.25H38.25ZM14.75 38.25H38.25V61.75H61.75V85.25H14.75Z"
-                                    />
-                                </g>
+                                <path d="M19,10 L19,58 A 16,16 0 0,1 3,74 L3,26 A 16,16 0 0,1 19,10 Z" />
+                                <path d="M45,26 L45,74 A 16,16 0 0,1 29,90 L29,42 A 16,16 0 0,1 45,26 Z" />
+                                <path d="M71,10 L71,58 A 16,16 0 0,1 55,74 L55,26 A 16,16 0 0,1 71,10 Z" />
+                                <path d="M97,26 L97,74 A 16,16 0 0,1 81,90 L81,42 A 16,16 0 0,1 97,26 Z" />
                             </svg>
-                            <span>Monochrome</span>
+                            <span>Pulse</span>
                         </a>
                         <button
                             id="sidebar-toggle"
@@ -1976,7 +1976,7 @@
                                     <span>Unreleased</span>
                                 </a>
                             </li>
-                            <li class="nav-item" id="sidebar-nav-donate">
+                            <li class="nav-item" id="sidebar-nav-donate" style="display: none">
                                 <a id="sidebar-donate-link" style="cursor: pointer">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -2034,7 +2034,7 @@
                         <div class="sidebar-nav-bottom">
                             <nav class="sidebar-nav bottom">
                                 <ul>
-                                    <li class="nav-item" id="sidebar-nav-about-bottom">
+                                    <li class="nav-item" id="sidebar-nav-about-bottom" style="display: none">
                                         <a href="/about">
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
@@ -2055,7 +2055,7 @@
                                             <span>About</span>
                                         </a>
                                     </li>
-                                    <li class="nav-item" id="sidebar-nav-discordbtn">
+                                    <li class="nav-item" id="sidebar-nav-discordbtn" style="display: none">
                                         <a href="discord.html" target="_blank">
                                             <svg
                                                 width="64px"
@@ -5287,7 +5287,7 @@
                                     <div class="info">
                                         <span class="label">ADVANCED: Custom Database/Auth</span>
                                         <span class="description"
-                                            >Configure custom PocketBase and Appwrite instances</span
+                                            >Configure custom PocketBase and Firebase instances</span
                                         >
                                     </div>
                                     <button id="custom-db-btn" class="btn-secondary">Configure</button>

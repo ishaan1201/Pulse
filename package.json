@@ -56,7 +56,6 @@
         "@kawarp/core": "^1.1.1",
         "@neutralinojs/lib": "^6.5.0",
         "@uimaxbai/am-lyrics": "^1.1.4",
-        "appwrite": "^23.0.0",
         "butterchurn": "^2.6.7",
         "butterchurn-presets": "^2.4.7",
         "client-zip": "^2.5.0",

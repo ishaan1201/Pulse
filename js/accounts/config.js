@@ -1,28 +1,23 @@
-import { Client, Account } from 'appwrite';
+// js/accounts/config.js
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
-const getEndpoint = () => {
-    const local = localStorage.getItem('monochrome-appwrite-endpoint');
-    if (local) return local;
-
-    if (window.__APPWRITE_ENDPOINT__) return window.__APPWRITE_ENDPOINT__;
-
-    const hostname = window.location.hostname;
-    if (hostname.endsWith('monochrome.tf') || hostname === 'monochrome.tf') {
-        return 'https://auth.monochrome.tf/v1';
-    }
-    return 'https://auth.samidy.com/v1';
+// REPLACE THESE VALUES with your exact Netplix Firebase Config
+const firebaseConfig = {
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+    appId: import.meta.env.VITE_FIREBASE_APP_ID,
+    measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
-const getProject = () => {
-    const local = localStorage.getItem('monochrome-appwrite-project');
-    if (local) return local;
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
 
-    if (window.__APPWRITE_PROJECT_ID__) return window.__APPWRITE_PROJECT_ID__;
-
-    return 'auth-for-monochrome';
-};
-
-const client = new Client().setEndpoint(getEndpoint()).setProject(getProject());
-
-const account = new Account(client);
-export { client, account as auth };
+// Export auth as 'auth' so auth.js can import it exactly as it did before
+export { auth, db };

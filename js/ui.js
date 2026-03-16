@@ -3587,7 +3587,7 @@ export class UIRenderer {
                     numberOfTracks: playlistData.tracks ? playlistData.tracks.length : 0,
                     isUserPlaylist: true,
                 });
-                document.title = `${playlistData.name || playlistData.title} - Monochrome`;
+                document.title = `${playlistData.name || playlistData.title} - Pulse`;
 
                 // Setup playlist search
                 this.setupTracklistSearch();

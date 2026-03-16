@@ -2995,38 +2995,38 @@ export function initializeSettings(scrobbler, player, api, ui) {
     const customDbBtn = document.getElementById('custom-db-btn');
     const customDbModal = document.getElementById('custom-db-modal');
     const customPbUrlInput = document.getElementById('custom-pb-url');
-    const customAppwriteEndpointInput = document.getElementById('custom-appwrite-endpoint');
-    const customAppwriteProjectInput = document.getElementById('custom-appwrite-project');
+    const customFirebaseApiKeyInput = document.getElementById('custom-appwrite-endpoint');
+    const customFirebaseProjectIdInput = document.getElementById('custom-appwrite-project');
     const customDbSaveBtn = document.getElementById('custom-db-save');
     const customDbResetBtn = document.getElementById('custom-db-reset');
     const customDbCancelBtn = document.getElementById('custom-db-cancel');
 
     if (customDbBtn && customDbModal) {
-        const appwriteFromEnv = !!(window.__APPWRITE_ENDPOINT__ || window.__APPWRITE_PROJECT_ID__);
+        const firebaseFromEnv = !!(window.__FIREBASE_API_KEY__ || window.__FIREBASE_PROJECT_ID__);
         const pbFromEnv = !!window.__POCKETBASE_URL__;
 
         // Hide entire setting if both are server-configured
-        if (appwriteFromEnv && pbFromEnv) {
+        if (firebaseFromEnv && pbFromEnv) {
             const settingItem = customDbBtn.closest('.setting-item');
             if (settingItem) settingItem.style.display = 'none';
         }
 
         // Hide individual fields in the modal
         if (pbFromEnv && customPbUrlInput) customPbUrlInput.closest('div[style]').style.display = 'none';
-        if (appwriteFromEnv) {
-            if (customAppwriteEndpointInput) customAppwriteEndpointInput.closest('div[style]').style.display = 'none';
-            if (customAppwriteProjectInput) customAppwriteProjectInput.closest('div[style]').style.display = 'none';
+        if (firebaseFromEnv) {
+            if (customFirebaseApiKeyInput) customFirebaseApiKeyInput.closest('div[style]').style.display = 'none';
+            if (customFirebaseProjectIdInput) customFirebaseProjectIdInput.closest('div[style]').style.display = 'none';
         }
 
         customDbBtn.addEventListener('click', () => {
             const pbUrl = localStorage.getItem('monochrome-pocketbase-url') || '';
-            const appwriteEndpoint = localStorage.getItem('monochrome-appwrite-endpoint') || '';
-            const appwriteProject = localStorage.getItem('monochrome-appwrite-project') || '';
+            const firebaseApiKey = localStorage.getItem('monochrome-appwrite-endpoint') || '';
+            const firebaseProjectId = localStorage.getItem('monochrome-appwrite-project') || '';
 
             if (!pbFromEnv && customPbUrlInput) customPbUrlInput.value = pbUrl;
-            if (!appwriteFromEnv) {
-                if (customAppwriteEndpointInput) customAppwriteEndpointInput.value = appwriteEndpoint;
-                if (customAppwriteProjectInput) customAppwriteProjectInput.value = appwriteProject;
+            if (!firebaseFromEnv) {
+                if (customFirebaseApiKeyInput) customFirebaseApiKeyInput.value = firebaseApiKey;
+                if (customFirebaseProjectIdInput) customFirebaseProjectIdInput.value = firebaseProjectId;
             }
 
             customDbModal.classList.add('active');
@@ -3049,18 +3049,18 @@ export function initializeSettings(scrobbler, player, api, ui) {
                 }
             }
 
-            if (!appwriteFromEnv) {
-                const endpoint = customAppwriteEndpointInput?.value.trim();
-                const project = customAppwriteProjectInput?.value.trim();
+            if (!firebaseFromEnv) {
+                const apiKey = customFirebaseApiKeyInput?.value.trim();
+                const projectId = customFirebaseProjectIdInput?.value.trim();
 
-                if (endpoint) {
-                    localStorage.setItem('monochrome-appwrite-endpoint', endpoint);
+                if (apiKey) {
+                    localStorage.setItem('monochrome-appwrite-endpoint', apiKey);
                 } else {
                     localStorage.removeItem('monochrome-appwrite-endpoint');
                 }
 
-                if (project) {
-                    localStorage.setItem('monochrome-appwrite-project', project);
+                if (projectId) {
+                    localStorage.setItem('monochrome-appwrite-project', projectId);
                 } else {
                     localStorage.removeItem('monochrome-appwrite-project');
                 }
