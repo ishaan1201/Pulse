@@ -144,7 +144,7 @@ export const apiSettings = {
         instancesObj = await this.loadInstancesFromGitHub();
         const userInst = this._loadUserInstances();
 
-        const defaultUrls = instancesObj[type] || instancesObj.api || [];
+        const defaultUrls = (instancesObj[type] && instancesObj[type].length > 0) ? instancesObj[type] : (instancesObj.api || []);
         const userUrls = userInst[type] || [];
 
         const combined = [...userUrls.map((u) => (typeof u === 'string' ? { url: u, isUser: true } : { ...u, isUser: true })), ...defaultUrls];
