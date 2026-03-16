@@ -129,7 +129,7 @@ export async function loadProfile(username) {
     profilePage.classList.add('active');
 
     document.getElementById('profile-banner').style.backgroundImage = '';
-    document.getElementById('profile-avatar').src = '/assets/appicon.png';
+    document.getElementById('profile-avatar').src = '/assets/logo.svg';
     document.getElementById('profile-display-name').textContent = 'Loading...';
     document.getElementById('profile-username').textContent = '@' + username;
     document.getElementById('profile-status').style.display = 'none';
@@ -247,7 +247,7 @@ export async function loadProfile(username) {
                         const isNowPlaying = track['@attr']?.nowplaying === 'true';
                         let image = getLastFmImage(track.image);
                         const hasImage = !!image;
-                        if (!image) image = '/assets/appicon.png';
+                        if (!image) image = '/assets/logo.svg';
 
                         track._imgId = `scrobble-img-${index}`;
                         track._needsCover = !hasImage;
@@ -264,7 +264,7 @@ export async function loadProfile(username) {
 
                         return `
                         <div class="track-item lastfm-track" data-title="${escapeHtml(track.name)}" data-artist="${escapeHtml(track.artist?.['#text'] || track.artist?.name || '')}" style="grid-template-columns: 40px 1fr auto; cursor: pointer;">
-                            <img id="${track._imgId}" src="${image}" class="track-item-cover" style="width: 40px; height: 40px; border-radius: 4px;" loading="lazy" onerror="this.src='/assets/appicon.png'">
+                            <img id="${track._imgId}" src="${image}" class="track-item-cover" style="width: 40px; height: 40px; border-radius: 4px;" loading="lazy" onerror="this.src='/assets/logo.svg'">
                             <div class="track-item-info">
                                 <div class="track-item-details">
                                     <div class="title">${track.name}</div>
@@ -300,7 +300,7 @@ export async function loadProfile(username) {
                     .map((artist, index) => {
                         let image = getLastFmImage(artist.image);
                         const hasImage = !!image;
-                        if (!image) image = '/assets/appicon.png';
+                        if (!image) image = '/assets/logo.svg';
 
                         const imgId = `top-artist-img-${index}`;
                         artist._imgId = imgId;
@@ -309,7 +309,7 @@ export async function loadProfile(username) {
                         return `
                         <div class="card artist lastfm-card" data-name="${escapeHtml(artist.name)}" style="cursor: pointer;">
                             <div class="card-image-wrapper">
-                                <img id="${imgId}" src="${image}" class="card-image" loading="lazy" onerror="this.src='/assets/appicon.png'">
+                                <img id="${imgId}" src="${image}" class="card-image" loading="lazy" onerror="this.src='/assets/logo.svg'">
                             </div>
                             <div class="card-info">
                                 <div class="card-title">${artist.name}</div>
@@ -343,7 +343,7 @@ export async function loadProfile(username) {
                     .map((album, index) => {
                         let image = getLastFmImage(album.image);
                         const hasImage = !!image;
-                        if (!image) image = '/assets/appicon.png';
+                        if (!image) image = '/assets/logo.svg';
 
                         const imgId = `top-album-img-${index}`;
                         album._imgId = imgId;
@@ -358,7 +358,7 @@ export async function loadProfile(username) {
                         return `
                         <div class="card lastfm-card" data-name="${escapeHtml(album.name)}" data-artist="${escapeHtml(artistName)}" style="cursor: pointer;">
                             <div class="card-image-wrapper">
-                                <img id="${imgId}" src="${image}" class="card-image" loading="lazy" onerror="this.src='/assets/appicon.png'">
+                                <img id="${imgId}" src="${image}" class="card-image" loading="lazy" onerror="this.src='/assets/logo.svg'">
                             </div>
                             <div class="card-info">
                                 <div class="card-title">${album.name}</div>
@@ -392,7 +392,7 @@ export async function loadProfile(username) {
                     .map((track, index) => {
                         let image = getLastFmImage(track.image);
                         const hasImage = !!image;
-                        if (!image) image = '/assets/appicon.png';
+                        if (!image) image = '/assets/logo.svg';
 
                         const imgId = `top-track-img-${index}`;
                         track._imgId = imgId;
@@ -406,7 +406,7 @@ export async function loadProfile(username) {
 
                         return `
                         <div class="track-item lastfm-track" data-title="${escapeHtml(track.name)}" data-artist="${escapeHtml(artistName)}" style="grid-template-columns: 40px 1fr auto; cursor: pointer;">
-                            <img id="${imgId}" src="${image}" class="track-item-cover" style="width: 40px; height: 40px; border-radius: 4px;" loading="lazy" onerror="this.src='/assets/appicon.png'">
+                            <img id="${imgId}" src="${image}" class="track-item-cover" style="width: 40px; height: 40px; border-radius: 4px;" loading="lazy" onerror="this.src='/assets/logo.svg'">
                             <div class="track-item-info">
                                 <div class="track-item-details">
                                     <div class="title">${track.name}</div>
@@ -454,7 +454,7 @@ export async function loadProfile(username) {
             card.className = 'card';
             card.innerHTML = `
                 <div class="card-image-wrapper">
-                    <img src="${playlist.cover || '/assets/appicon.png'}" class="card-image" loading="lazy" alt="${playlist.name}">
+                    <img src="${playlist.cover || '/assets/logo.svg'}" class="card-image" loading="lazy" alt="${playlist.name}">
                 </div>
                 <div class="card-info">
                     <div class="card-title">${playlist.name}</div>
