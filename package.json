@@ -61,6 +61,7 @@
         "client-zip": "^2.5.0",
         "cookie-session": "^2.1.1",
         "dashjs": "^5.1.1",
+        "firebase": "^12.10.0",
         "fuse.js": "^7.1.0",
         "hls.js": "^1.6.15",
         "jose": "^6.2.0",
